@@ -32,3 +32,4 @@ public function run()
         
     }
 =================================
+php artisan migrate:fresh --seed
