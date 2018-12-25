@@ -10,8 +10,19 @@
                 <div class="card-body">
                     @foreach ($questions as $question)
                         <div class="media">
+                            <div class="d-flex flex-collumn counters">
+                                <div class="vote">
+                                    <strong> {{ $question->votes }} </strong> {{ str_plural('vote', $question->votes) }}
+                                </div>
+                                <div class="status">
+                                    <strong> {{ $question->answers }} </strong> {{ str_plural('answer', $question->answers) }}
+                                </div>
+                                <div class="view">
+                                    <strong> {{ $question->views . " " }} </strong> {{ str_plural('view', $question->views) }}
+                                </div>
+                            </div>
                             <div class="media-body">
-                            <h3 class="mt-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
+                                <h3 class="mt-0"><a href="{{ $question->url }}">{{ $question->title }}</a></h3>
                                 <p class="lead">
                                     Asked by:
                                     <a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
