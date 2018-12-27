@@ -24,7 +24,15 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        
+        \Gate::define('update-question', function($user, $question){
+            // dd($user);
+            // echo('user->id: '. $user->id . ' question->user_id '. $question->user_id);
+            return $user->id === $question->user_id;
+        });
 
-        //
+        \Gate::define('delete-question', function($user, $question){
+            return $user->id === $question->user_id;
+        });
     }
 }
