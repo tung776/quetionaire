@@ -3,26 +3,57 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <h2>{{ $question->title }}</h2>
-                        <div class="ml-auto">
-                            <a href="{{ route('questions.index') }}" class="btn btn-outline-secondary">Back to list of questions</a>
+                <div class="card-body">
+                    <div class="card-title">
+                        <div class="d-flex align-items-center">
+                            <h2>{{ $question->title }}</h2>
+                            <div class="ml-auto">
+                                <a href="{{ route('questions.index') }}" class="btn btn-outline-secondary">Back to list of questions</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <hr>
+    
+                    <div class="media">
+                        <div class="d-flex flex-column vote-controls">
+                            <a title="This question is useful" href="" class="vote-up">
+                                Vote up
+                            </a>
+                            <span class="votes-count">123</span>
+                            <a title="this question is not usefull" href="" class="vote-down off">
+                                Vote down
+                            </a>
+                            <a title="Click to mark as favorite question (click again to undo)" href="" class="favorite">
+                                favorite
+                                <span class="favorite-count">123</span>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            {!! $question->body_html !!}
+                            <div class="float-right">
+                                <span class="text-muted">
+                                    Asked {{ $question->created_at->format('d/m/y') }}
+                                    <div class="media mt-2">
+                                        <a class="pr-2" href="{{ $question->user->url }}">
+                                            <img src="{{ $question->user->avatar }}" alt="">
+                                        </a>
+                                        <div class="media-body mt-1">
+                                            <a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    
-                </div>
-
-                <div class="card-body">
-                    {!! $question->body_html !!}
                 </div>
             </div>
         </div>
     </div>
     <div class="row mt-4 justify-content-center">
-        <div class="col-md-8 col-offset-md-2">
+        <div class="col-md-10 ">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
